@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import "../globals.css";
 import Image from "next/image";
 import Link from "next/link";
+import GeneralScoringInfo from "@/components/GeneralScoringInfo";
 
 export default function DashboardLayout({
   children,
@@ -53,62 +54,22 @@ export default function DashboardLayout({
         <div className="w-[44%] overflow-scroll">
           {/*add this to className above if needed: md:w-[92%] xl:w-[86%] bg-[#F7f8FA] */}
           {/* <Navbar/> */}
+          <div className="text-lg font-semibold mb-2">Live Video Feed</div>
+            <div className="w-full h-64 bg-black rounded-lg overflow-hidden flex items-center justify-center">
+              {/* Replace this with actual video stream */}
+              <video 
+                src="/sample-video.mp4" 
+                controls 
+                className="w-full h-full object-cover"
+              >
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          <div className=''>
+            <GeneralScoringInfo />
+          </div>
         </div>
       </div>
     </div>
   );
 }
-
-
-
-// import type { Metadata } from "next";
-// import { Inter } from "next/font/google";
-// import "../globals.css";
-// import Image from "next/image";
-// import Link from "next/link";
-
-// // import Sidebar from "@/components/Sidebar"; // assumed sidebar component
-// // import Header from "@/components/Header";   // assumed header component
-
-// const inter = Inter({ subsets: ["latin"] });
-
-// export const metadata: Metadata = {
-//   title: "Ergonomic Analysis Dashboard",
-//   description: "Next.js dashboard for realtime ergonomic analysis",
-// };
-
-// export default function DashboardLayout({
-//   children,
-// }: Readonly<{
-//   children: React.ReactNode;
-// }>) {
-//   return (
-  
-//   </div>
-//     {/* LEFT */}
-//     <div className="w-[12%] bg-yellow-300">
-//       <Link href="/public">
-//         <Image src="/CCAM logo.png" alt="Logo" width={64} height={64} className="mx-auto my-4" />
-//         <span className="block text-center">CCAM</span>
-//       </Link>
-//     </div>
-//     {/* MIDDLE */}
-//     <div className="w-[44%] bg-blue-100">MIDDLE content</div>
-//     {/* RIGHT */}
-//     <div className="w-[44%] bg-white">RIGHT content</div>
-
-//   </div>
-// // return (
-//   //   <html lang="en">
-//   //     <body className={`${roboto.className} dashboard-body`}>
-//   //       <div className="dashboard-container">
-//   //         <Sidebar />
-//   //         <main className="dashboard-main">
-//   //           <Headers />
-//   //           {children}
-//   //         </main>
-//   //       </div>
-//   //     </body>
-//   //   </html>
-//   );
-// }
