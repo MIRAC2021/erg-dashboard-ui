@@ -26,8 +26,8 @@ export default function DashboardLayout({
 
         {/* Right - Date and Time */}
         <div className="text-right text-sm">
-          <div>DATE:</div>
-          <div>TIME:</div>
+          <div>DATE:  </div>
+          <div>TIME:  </div>
         </div>
       </div>
 
@@ -39,18 +39,20 @@ export default function DashboardLayout({
             href="/"
             className="flex items-center justify-center lg:justify-start gap-2"
           >
-            <span className="block text-center">LEFT content</span>
+            {/* <span className="block text-center">LEFT content</span> */}
           </Link>
           <OperatorIDs/>
         </div>
 
         {/* MIDDLE */}
-        <div className="w-[44%] bg-blue-100 p-4">MIDDLE content</div>
+        <div className="w-[44%] bg-blue-100 p-4">
+          {children}
+        </div>
 
         {/* RIGHT */}
-        <div className="w-[44%] md:w-[92%] xl:w-[86%] bg-[#F7f8FA] overflow-scroll">
+        <div className="w-[44%] overflow-scroll">
+          {/*add this to className above if needed: md:w-[92%] xl:w-[86%] bg-[#F7f8FA] */}
           {/* <Navbar/> */}
-            {children}
         </div>
       </div>
     </div>
