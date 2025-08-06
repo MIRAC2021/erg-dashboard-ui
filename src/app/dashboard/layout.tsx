@@ -55,12 +55,12 @@ export default function DashboardLayout({
           {/*add this to className above if needed: md:w-[92%] xl:w-[86%] bg-[#F7f8FA] */}
           {/* <Navbar/> */}
           <div className="text-lg font-semibold mb-2">Live Video Feed</div>
-            <div className="w-full h-64 bg-black rounded-lg overflow-hidden flex items-center justify-center">
+            <div className="w-[90%] h-64 bg-black rounded-lg overflow-hidden flex items-center justify-center">
               {/* Replace this with actual video stream */}
               <video 
                 src="/sample-video.mp4" 
                 controls 
-                className="w-full h-full object-cover"
+                className="w-[90%] h-full object-cover"
               >
                 Your browser does not support the video tag.
               </video>

@@ -1,9 +1,14 @@
-# Lama Dev School Management Dashboard
+# Realtime Ergonomic Dashboard
 
 ## Getting Started
 
-First, run the development server:
-
+### Implementation
+- [Clone Repo](https://github.com/MIRAC2021/erg-dashboard-ui.git)
+- Install Dependencies
+```bash
+npm i
+```
+- Run the code
 ```bash
 npm run dev
 # or

@@ -63,12 +63,12 @@ const bodyParts = [
 
 const ScoreDetails = () => {
   return (
-    <div className="rounded-2xl bg-white p-4 flex flex-col gap-4">
+    <div className="rounded-2xl bg-white w-[90%] p-8 flex flex-col gap-4">
       <h1 className="text-xl font-bold">Score Details</h1>
 
       {bodyParts.map((section) => (
         <div key={section.title}>
-          <h2 className="text-md font-semibold text-gray-700 mb-2">{section.title}</h2>
+          <h2 className="text-md font-semibold text-gray-700 mb-2">{section.title}:</h2>
           <div className="grid grid-cols-2 gap-4">
             {section.items.map((item) => (
               <Link
@@ -78,8 +78,8 @@ const ScoreDetails = () => {
               >
                 {/* <Image src={item.icon} alt={item.label} width={30} height={30} /> */}
                 <div>
-                  <span className="font-medium">{item.label}</span>
-                  <div className="text-sm text-gray-500">{item.type.join(", ")}</div>
+                  <span className="font-medium">{item.label}: </span>
+                  <span className="text-sm text-gray-500">{item.type.join(", ")}</span>
                 </div>
               </Link>
             ))}
