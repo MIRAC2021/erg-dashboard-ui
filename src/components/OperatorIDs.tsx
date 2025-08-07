@@ -9,21 +9,21 @@ const menuItems = [
       {
         icon: "/operator.png",
         label: "Person1",
-        href: "/",
+        href: "/dashboard",
         visible: ["person1", "operator"],
       },
-      {
-        icon: "/operator.png",
-        label: "Person2",
-        href: "/",
-        visible: ["person2", "operator"],
-      },
-      {
-        icon: "/operator.png",
-        label: "Person3",
-        href: "/",
-        visible: ["person3", "operator"],
-      },
+      // {
+      //   icon: "/operator.png",
+      //   label: "Person2",
+      //   href: "/",
+      //   visible: ["person2", "operator"],
+      // },
+      // {
+      //   icon: "/operator.png",
+      //   label: "Person3",
+      //   href: "/",
+      //   visible: ["person3", "operator"],
+      // },
     ],
   },
   {
@@ -32,13 +32,13 @@ const menuItems = [
       {
         icon: "/blueCircle.png",
         label: "RULA",
-        href: "/",
+        href: "/rulainfo",
         visible: ["RULA", "score", "operator"],
       },
       {
         icon: "/blackCircle.png",
         label: "REBA",
-        href: "/",
+        href: "/rebainfo",
         visible: ["REBA", "score", "operator"],
       },
     ],

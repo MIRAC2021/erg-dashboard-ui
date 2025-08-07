@@ -1,4 +1,5 @@
 import ScoreDetails from "@/components/ScoreDetails";
+import ZenohDataListener from "@/components/ZenohData";
 import UserCard from "@/components/UserCard";
 
 const mainDashboard = () => {
@@ -8,9 +9,9 @@ const mainDashboard = () => {
       <div className='flex-1'>
         {/* USER CARDS */}
         <div className='flex gap-4 flex-col md:flex-row flex-wrap'>
-          <UserCard type="RULA" />
-          <UserCard type="REBA" />
-          <UserCard type="FINAL" />
+          {/* <UserCard type="RULA" value = {data.rula.final_score}/>
+          <UserCard type="REBA" value = {data.reba.final_score}/>
+          <UserCard type="FINAL" value = {data.final.final_score}/> */}
         </div>
         <div className='flex gap-4 flex-col md:flex-row flex-wrap mt-4'>
           {/* REBA Scores */}

@@ -51,11 +51,13 @@ export default function DashboardLayout({
         </div>
 
         {/* RIGHT */}
-        <div className="w-[44%] overflow-scroll">
+        <div className="w-[44%] overflow-scroll bg-[#F7f8FA] p-10">
           {/*add this to className above if needed: md:w-[92%] xl:w-[86%] bg-[#F7f8FA] */}
           {/* <Navbar/> */}
           <div className="text-lg font-semibold mb-2">Live Video Feed</div>
-            <div className="w-[90%] h-64 bg-black rounded-lg overflow-hidden flex items-center justify-center">
+
+          <div className="flex justify-center">
+            <div className="w-[90%] h-96 bg-black rounded-lg overflow-hidden flex items-center justify-center">
               {/* Replace this with actual video stream */}
               <video 
                 src="/sample-video.mp4" 
@@ -65,8 +67,13 @@ export default function DashboardLayout({
                 Your browser does not support the video tag.
               </video>
             </div>
+          </div>
+          <br />
+          <br />
           <div className=''>
-            <GeneralScoringInfo />
+            <div className="w-full flex justify-center">
+              <GeneralScoringInfo />
+            </div>
           </div>
         </div>
       </div>

@@ -1,12 +1,12 @@
 import Image from "next/image";
 import React from "react";
 
-const Rebainfo = () => {
+const Rulainfo = () => {
   return (
-    <div className="rebainfo">
+    <div className="rulainfo">
       <Image
-        src="/REBA info.png" // Relative to /public
-        alt="REBA Diagram"
+        src="/RULA info.png" // Relative to /public
+        alt="RULA Diagram"
         width={900} // Adjust width and height as needed
         height={1200}
       />
@@ -14,4 +14,4 @@ const Rebainfo = () => {
   );
 };
 
-export default Rebainfo;
+export default Rulainfo;

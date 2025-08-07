@@ -13,11 +13,7 @@ const GeneralScoringInfo = () => {
         <br />
         5-6 = Further investigation, change soon
         <br />
-        7-8 = Further investigation, change soon
-        <br />
-        9-10 = Further investigation, change soon
-        <br />
-        11+ = Immediate change required
+        7 = Immediate change required
         <br />
         <br />
         <strong>Scoring for REBA:</strong>
