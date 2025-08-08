@@ -15,7 +15,7 @@ const mainDashboard = () => {
         <div className='flex gap-4 flex-col md:flex-row flex-wrap'>
           <UserCard type="RULA" value = {data?.rula.summary.final_score ?? "null"} link="/zenohdata"/>
           <UserCard type="REBA" value = {data?.reba.summary.final_score ?? "null"} link="/zenohdata"/>
-          <UserCard type="FINAL" value = {data?.final_risk_level ?? "null"} link="/zenohdata"/>
+          <UserCard type="RISK" value = {data?.final_risk_level ?? "null"} link="/zenohdata"/>
         </div>
         <div className='flex gap-4 flex-col md:flex-row flex-wrap mt-4'>
           {/* RULA Scores */}
