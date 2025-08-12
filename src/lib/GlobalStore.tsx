@@ -24,9 +24,9 @@ type RulaData = {
     "trunk_angle": number,
     "trunk_score": number
   };
-  summary: {
-    "final_score": string;
-  };
+//   summary: {
+//     "final_score": string;
+//   };
 };
 
 type RebaData = {
@@ -52,15 +52,17 @@ type RebaData = {
         "trunk_angle": number,
         "trunk_score": number
     };
-    summary: {
-        "final_score": string;
-    };
+    // summary: {
+    //     "final_score": string;
+    // };
 };
 
 type ErgonomicData = {
   person_id: number;
   rula: RulaData;
   reba: RebaData;
+  final_score_rula:string;
+  final_score_reba:string;
   final_risk_level: string;
 };
 

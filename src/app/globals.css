@@ -9,3 +9,11 @@
 .ccam2 {
     background-color:#f4b322;
 }
+
+circle {
+  transition: stroke 0.5s ease;
+}
+text {
+  transition: fill 0.5s ease;
+}
+

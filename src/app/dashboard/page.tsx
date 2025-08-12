@@ -1,11 +1,61 @@
 "use client"; // ✅ This must be the FIRST line
-
-import ScoreDetails from "@/components/ScoreDetails";
+import React, { useEffect, useState } from "react";
+import RulaScoreDetails from "@/components/RulaScoreDetails";
+// import ScoreDetails from "@/components/ScoreDetails";
 import UserCard from "@/components/UserCard";
-import { useErgonomicStore } from "@/lib/GlobalStore";
+import RiskCircle from "@/components/RiskCircle";
+// import { useErgonomicStore } from "@/lib/GlobalStore";
+import { useErgonomicStore, ErgonomicData } from "@/lib/GlobalStore";
+
+// # TODO: No one in camera frame
 
 const mainDashboard = () => {
-  const { data } = useErgonomicStore();
+  const { data, setData } = useErgonomicStore();
+  const validLevels = ["low", "medium", "high"] as const;
+  const fallbackLevel: "low" | "medium" | "high" = "low";
+
+  const riskLevel = validLevels.includes(data?.final_risk_level as any)
+    ? (data?.final_risk_level as "low" | "medium" | "high")
+    : fallbackLevel;
+
+
+    useEffect(() => {
+      const socket = new WebSocket("ws://localhost:8765");
+
+      socket.onopen = () => {
+        console.log("WebSocket connected");
+      };
+
+      socket.onmessage = (event: MessageEvent) => {
+        console.log("print this");
+        console.log("Incoming message:", event.data);
+        try {
+          // Assuming the incoming message is a JSON string
+          const parsedData: ErgonomicData[] = JSON.parse(event.data);
+          console.log("📥 Received data from from Zenoh bridge on Page:", parsedData);
+          setData(parsedData[0]);
+          console.log("final_risk_level field:", parsedData[0].final_score_reba);
+        } catch (err) {
+          console.error("❌ Failed to parse incoming message:", err);
+        }
+      };
+
+      socket.onerror = (err: Event) => {
+        console.error("⚠️ WebSocket error:", err);
+      };
+
+      socket.onclose = (event) => {
+        console.log("🔌 WebSocket connection closed");
+        console.log("Code:", event.code);
+        console.log("Reason:", event.reason);
+        console.log("Was clean?:", event.wasClean);
+      };
+
+      // Cleanup function to close the socket when component unmounts
+      return () => {
+        socket.close();
+      };
+    }, []);
 
   return (
     <div className='p-4 flex gap-4 flex-col md:flex-row'>
@@ -13,19 +63,32 @@ const mainDashboard = () => {
       <div className='flex-1'>
         {/* USER CARDS */}
         <div className='flex gap-4 flex-col md:flex-row flex-wrap'>
-          <UserCard type="RULA" value = {data?.rula.summary.final_score ?? "null"} link="/zenohdata"/>
-          <UserCard type="REBA" value = {data?.reba.summary.final_score ?? "null"} link="/zenohdata"/>
-          <UserCard type="RISK" value = {data?.final_risk_level ?? "null"} link="/zenohdata"/>
+          {data ? (
+            <>
+              <UserCard type="RULA" value={JSON.stringify(data?.final_score_rula) ?? "null"} />
+              <UserCard type="REBA" value={JSON.stringify(data?.final_score_reba) ?? "null"} />
+              <UserCard type="RISK" value={JSON.stringify(data?.final_risk_level) ?? "null"} />
+            </>
+          ) : (
+            <p>Waiting for data...</p>
+          )}
+        </div>
+        
+        {/* <pre>{JSON.stringify(data?.final_score_reba ?? "null", null, 2)}</pre> */}
+
+
+
+        {/* <pre style={{ textAlign: "left" }}>{JSON.stringify(data, null, 2)}</pre> */}
+        {/* <div className='flex gap-4 flex-col md:flex-row flex-wrap mt-4'> */}
+          <div className='flex flex-col w-full mt-4'>
+          {/* Printing Score Details */}
+          <h2 className='text-xl font-bold'>Score Details</h2>
+          <RulaScoreDetails/>
         </div>
         <div className='flex gap-4 flex-col md:flex-row flex-wrap mt-4'>
-          {/* RULA Scores */}
-          <h2 className='text-xl font-bold'>RULA Scores</h2>
-          <ScoreDetails/>
-        </div>
-        <div className='flex gap-4 flex-col md:flex-row flex-wrap mt-4'>
-          {/* REBA Scores */}
-          <h2 className='text-xl font-bold'>REBA Scores</h2>
-          <ScoreDetails/>
+          {/* Score Circle */}
+          {/* <h2 className='text-xl font-bold'>RISK Circle</h2>
+          <RiskCircle level={riskLevel} /> */}
         </div>
       </div>
     </div>
