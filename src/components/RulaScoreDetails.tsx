@@ -24,7 +24,7 @@ const RulaScoreDetails = () => {
     const typeData = data?.[type];
     if (!typeData) return null;
 
-return (
+  return (
       <div className="rounded-2xl bg-white w-[90%] p-8 flex flex-col gap-8 mb-6">
         <h1 className="text-xl font-bold">{type.toUpperCase()} Scores</h1>
         {/* <h2 className="text-md font-semibold text-gray-700 mb-2">Score Details</h2> */}

@@ -1,16 +1,26 @@
 import React from "react";
+import Link from "next/link";
+import ZenohDataListener from "@/app/zenohdata/page";
+import { useErgonomicStore } from "@/lib/GlobalStore";
+import {toSentenceCase} from "@/lib/Util";
 
 // Define the RiskCircle component
 // This component displays a circle with a color based on the risk level
 // and includes text indicating the risk level (low, medium, high).
-const RiskCircle: React.FC<{ level: "acceptable_posture" | "low" | "medium" | "high" }> = ({ level }) => {
-  const colorMap = {
-    acceptable_posture: "#89ee4eff", // Green
-    low: "#f1f164ff",     // Yellow
-    medium: "#FF9800",  // Orange
-    high: "#F44336",    // Red
+//{ level: "acceptable_posture" | "low" | "medium" | "high" } { level }
+const RiskCircle: React.FC = () => {
+  const data = useErgonomicStore((state) => state.data);
+  type RiskLevel = "ACCEPTABLE_POSTURE" | "LOW" | "MEDIUM" | "HIGH";
+  const level: RiskLevel = (data?.final_risk_level?.toUpperCase() as RiskLevel) ?? "HIGH";
+  const colorMap: Record<RiskLevel, string> = {
+    ACCEPTABLE_POSTURE: "#89ee4eff", // Green
+    LOW: "#f1f164ff",     // Yellow
+    MEDIUM: "#FF9800",  // Orange
+    HIGH: "#F44336",    // Red
   };
 
+  const link = "/zenohdata"; // Replace with the actual route you want to link to
+  console.log("level:", level);
   return (
     <svg width="100" height="100">
       <circle
@@ -20,7 +30,7 @@ const RiskCircle: React.FC<{ level: "acceptable_posture" | "low" | "medium" | "h
         stroke={colorMap[level]}
         strokeWidth="10"
         fill="none"
-        className={level === "medium" ? "rotate" : ""}
+        className={level === "MEDIUM" ? "rotate" : ""}
         />
 
       <text
@@ -31,7 +41,12 @@ const RiskCircle: React.FC<{ level: "acceptable_posture" | "low" | "medium" | "h
         fontSize="16"
         fill={colorMap[level]}
       >
-        {level.toUpperCase()}
+        <Link 
+            href={link}
+            className="flex lg:justify-start gap-2"
+          >
+            {level.toUpperCase() === "ACCEPTABLE_POSTURE" ? "Good" : toSentenceCase(level)}
+          </Link>
       </text>
     </svg>
   );

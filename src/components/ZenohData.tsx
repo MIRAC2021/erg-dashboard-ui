@@ -56,44 +56,6 @@ const ZenohDataListener: React.FC = () => {
       )}
     </div>
   );
-//   return (
-//   <div className="p-6 space-y-4">
-//     <h2 className="text-2xl font-bold">Zenoh Ergonomic Data</h2>
-//     {data ? (
-//       <div className="space-y-4">
-//         <div className="bg-white p-4 rounded shadow">
-//           <h3 className="text-lg font-semibold">Person ID: {data.person_id}</h3>
-//         </div>
-
-//         <div className="bg-blue-100 p-4 rounded shadow">
-//           <h3 className="text-lg font-bold">RULA Data</h3>
-//           <p>Side: {data.rula[0]?.side ?? "N/A"}</p>
-//           <p>Body Part: {data.rula[0]?.body_part ?? "N/A"}</p>
-//           <p>Angle: {data.rula[0]?.angle ?? "--"}°</p>
-//           <p>Score: {data.rula[0]?.score ?? "--"}</p>
-//           <p>Final Score: {data.rula[0]?.final_score ?? "--"}</p>
-
-//         </div>
-
-//         <div className="bg-green-100 p-4 rounded shadow">
-//           <h3 className="text-lg font-bold">REBA Data</h3>
-//           <p>Side: {data.reba[0]?.side ?? "N/A"}</p>
-//           <p>Body Part: {data.reba[0]?.body_part ?? "N/A"}</p>
-//           <p>Angle: {data.reba[0]?.angle ?? "--"}°</p>
-//           <p>Score: {data.reba[0]?.score ?? "--"}</p>
-//           <p>Final Score: {data.reba[0]?.final_score ?? "--"}</p>
-//         </div>
-
-//         <div className="bg-yellow-100 p-4 rounded shadow">
-//           <h3 className="text-lg font-bold">Risk Level</h3>
-//           <p>{data.final_risk_level}</p>
-//         </div>
-//       </div>
-//     ) : (
-//       <p>Waiting for data...</p>
-//     )}
-//   </div>
-// );
 
 };
 

@@ -6,6 +6,7 @@ import UserCard from "@/components/UserCard";
 import RiskCircle from "@/components/RiskCircle";
 // import { useErgonomicStore } from "@/lib/GlobalStore";
 import { useErgonomicStore, ErgonomicData } from "@/lib/GlobalStore";
+import {toSentenceCase} from "@/lib/Util";
 
 // # TODO: No one in camera frame
 
@@ -67,7 +68,7 @@ const mainDashboard = () => {
             <>
               <UserCard type="RULA" value={JSON.stringify(data?.final_score_rula) ?? "null"} />
               <UserCard type="REBA" value={JSON.stringify(data?.final_score_reba) ?? "null"} />
-              <UserCard type="RISK" value={JSON.stringify(data?.final_risk_level) ?? "null"} />
+              <UserCard type="RISK" value={(data?.final_risk_level ?? "null")=== "Acceptable_posture" ? "Good" : toSentenceCase(data?.final_risk_level)} />
             </>
           ) : (
             <p>Waiting for data...</p>

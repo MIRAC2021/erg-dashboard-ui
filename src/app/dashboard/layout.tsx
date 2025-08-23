@@ -57,8 +57,8 @@ export default function DashboardLayout({
 
         {/* Right - Date and Time */}
         <div className="text-right text-sm">
-          <div>DATE:  </div>
-          <div>TIME:  </div>
+          <div>DATE: {new Date().toLocaleDateString()} </div>
+          <div>TIME: {new Date().toLocaleTimeString()} </div>
         </div>
       </div>
 
@@ -83,9 +83,9 @@ export default function DashboardLayout({
               {/* <RiskCircle level={riskLevelForCircle} /> */}
         <div className="w-[44%] overflow-scroll bg-[#F7f8FA] p-10">
           <div className="text-lg font-semibold mb-2">RISK Circle</div>
-          <div>Risk Circle level: {riskLevelForCircle}</div>
+          {/* <div>Risk Circle level: {riskLevelForCircle}</div> */}
             <div className="flex justify-center mb-4">
-              <RiskCircle level={riskLevelForCircle} />
+              <RiskCircle />            
             </div>
           {/*add this to className above if needed: md:w-[92%] xl:w-[86%] bg-[#F7f8FA] */}
           {/* <Navbar/> */}
