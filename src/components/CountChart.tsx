@@ -1,3 +1,10 @@
+// WARN: Unused... probably...
+
+/**
+ * Heading for the count chart.
+ *
+ * @returns {CountChart} Count chart heading component.
+ */
 const CountChart = () => {
   return (
     <div className='rounded-2xl bg-white p-4 flex flex-col gap-4'>

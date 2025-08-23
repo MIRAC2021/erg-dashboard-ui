@@ -1,5 +1,10 @@
 import React from "react";
 
+/**
+ * Component for rendering general scoring information rubric.
+ *
+ * @returns {GeneralScoringInfo} Component that displays the scoring rubric.
+ */
 const GeneralScoringInfo = () => {
   return (
     <div className="rounded-2xl bg-white p-4">

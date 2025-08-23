@@ -3,14 +3,18 @@
 import React, { useEffect, useState } from "react";
 import { useErgonomicStore, ErgonomicData } from "@/lib/GlobalStore";
 
+/**
+ * Listener for ErgonomicData from the python bridge connected to a Zenoh 
+ * network.
+ *
+ * NOTE: The component should be removed at some point.
+ *
+ * @returns {React.FC} component listing the data returned from the bridge.
+ */
 const ZenohDataListener: React.FC = () => {
-  // const [data, setData] = useState<ErgonomicData | null>(null);
   const { data, setData } = useErgonomicStore();
-  // const data = useErgonomicStore((state) => state.data);
-  // const ErgonomicData = data ?? "N/A";
 
   useEffect(() => {
-    // wss://localhost:8765
     const socket = new WebSocket("ws://localhost:8765");
 
     socket.onopen = () => {
@@ -18,12 +22,10 @@ const ZenohDataListener: React.FC = () => {
     };
 
     socket.onmessage = (event: MessageEvent) => {
-        console.log("print this");
-        console.log("📥 Incoming message:", event.data);
+      console.log("📥 Incoming message:", event.data);
+
       try {
-        // Assuming the incoming message is a JSON string
         const parsedData: ErgonomicData = JSON.parse(event.data);
-        console.log("📥 Received data from Zenoh bridge:", parsedData);
         setData(parsedData);
       } catch (err) {
         console.error("❌ Failed to parse incoming message:", err);

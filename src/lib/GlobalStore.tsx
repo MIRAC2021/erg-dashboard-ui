@@ -1,6 +1,17 @@
 // store/ergonomicStore.ts
 import { create } from "zustand";
 
+// This is the core data processed by the application
+type ErgonomicData = {
+  person_id: number;
+  rula: RulaData;
+  reba: RebaData;
+  final_score_rula:string;
+  final_score_reba:string;
+  final_risk_level: string;
+};
+
+// Sub component for RULA data
 type RulaData = {
   right: {
     "shoulder_angle": number,
@@ -24,11 +35,9 @@ type RulaData = {
     "trunk_angle": number,
     "trunk_score": number
   };
-//   summary: {
-//     "final_score": string;
-//   };
 };
 
+// Sub component for REBA data
 type RebaData = {
     right: {
         "shoulder_angle": number,
@@ -52,25 +61,15 @@ type RebaData = {
         "trunk_angle": number,
         "trunk_score": number
     };
-    // summary: {
-    //     "final_score": string;
-    // };
 };
 
-type ErgonomicData = {
-  person_id: number;
-  rula: RulaData;
-  reba: RebaData;
-  final_score_rula:string;
-  final_score_reba:string;
-  final_risk_level: string;
-};
-
+// Store for global access to the Ergonomic data.
 type Store = {
   data: ErgonomicData | null;
   setData: (data: ErgonomicData) => void;
 };
 
+// global store
 export const useErgonomicStore = create<Store>((set) => ({
   data: null,
   setData: (data) => set({ data }),

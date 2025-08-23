@@ -2,6 +2,12 @@ import RulaScoreDetails from "@/components/RulaScoreDetails";
 import Image from "next/image";
 import React from "react";
 
+/**
+ * Component for rendering the RULA chart explaining how it works and scores are
+ * computed.
+ *
+ * @returns {Rulainfo} Component displaying the RULA chart.
+ */
 const Rulainfo = () => {
   return (
     <div className="rulainfo">
@@ -11,7 +17,6 @@ const Rulainfo = () => {
         width={900} // Adjust width and height as needed
         height={1200}
       />
-      {/* <RulaScoreDetails /> */}
     </div>
   );
 };
