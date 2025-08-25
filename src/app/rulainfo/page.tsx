@@ -1,4 +1,4 @@
-import RulaScoreDetails from "@/components/RulaScoreDetails";
+import RulaScoreDetails from "@/components/ScoreDetails";
 import Image from "next/image";
 import React from "react";
 

@@ -1,6 +1,5 @@
 import React from "react";
 import Link from "next/link";
-import ZenohDataListener from "@/app/zenohdata/page";
 import { useErgonomicStore } from "@/lib/GlobalStore";
 import { toSentenceCase } from "@/lib/Util";
 
@@ -35,13 +34,13 @@ const RiskCircle: React.FC = () => {
   const link = "/zenohdata"; 
 
   return (
-    <svg width="100" height="100">
+    <svg width="160" height="160">
       <circle
-        cx="50"
-        cy="50"
-        r="40"
+        cx="80"
+        cy="80"
+        r="50"
         stroke={colorMap[level]}
-        strokeWidth="10"
+        strokeWidth="20"
         fill="none"
         className={level === "MEDIUM" ? "rotate" : ""}
         />

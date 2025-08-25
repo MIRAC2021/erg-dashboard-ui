@@ -2,7 +2,7 @@
 "use client"; // ✅ This must be the FIRST line.
 
 import React, { useEffect, useState } from "react";
-import RulaScoreDetails from "@/components/RulaScoreDetails";
+import ScoreDetails from "@/components/ScoreDetails";
 import UserCard from "@/components/UserCard";
 import RiskCircle from "@/components/RiskCircle";
 import { useErgonomicStore, ErgonomicData } from "@/lib/GlobalStore";
@@ -71,9 +71,9 @@ const mainDashboard = () => {
     };
   }, []);
 
-  let final_risk_level = (data?.final_risk_level ?? "null");
-  let risk = final_risk_level  ===
-    "Acceptable_posture" ? "Good" : toSentenceCase(data?.final_risk_level);
+  let final_risk_level: string = data?.final_risk_level ?? "null";
+  let risk: string = final_risk_level  ===
+    "Acceptable_posture" ? "Good" : toSentenceCase(final_risk_level);
 
   return (
     <div className='p-4 flex gap-4 flex-col md:flex-row'>
@@ -92,8 +92,8 @@ const mainDashboard = () => {
           )}
         </div>
           <div className='flex flex-col w-full mt-4'>
-          <h2 className='text-xl font-bold'>Score Details</h2>
-          <RulaScoreDetails/>
+          <h2 className='text-xl font-bold'>Live Score Details</h2>
+          <ScoreDetails/>
         </div>
         <div className='flex gap-4 flex-col md:flex-row flex-wrap mt-4'>
         </div>
